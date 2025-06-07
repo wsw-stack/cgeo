@@ -74,6 +74,7 @@ import cgeo.geocaching.utils.LocalizationUtils;
 import cgeo.geocaching.utils.Log;
 import cgeo.geocaching.utils.MapMarkerUtils;
 import cgeo.geocaching.utils.MenuUtils;
+import cgeo.geocaching.utils.ShareUtils;
 import cgeo.geocaching.utils.TextUtils;
 import cgeo.geocaching.utils.functions.Func1;
 import cgeo.geocaching.wherigo.WherigoGame;
@@ -141,6 +142,7 @@ public class UnifiedMapActivity extends AbstractNavigationBarMapActivity impleme
 
     private static final String STATE_ROUTETRACKUTILS = "routetrackutils";
     private static final String ROUTING_SERVICE_KEY = "UnifiedMap";
+    private static final int REQUEST_CODE_LOG = 1001;
 
     private UnifiedMapViewModel viewModel = null;
     private AbstractTileProvider tileProvider = null;
@@ -149,6 +151,7 @@ public class UnifiedMapActivity extends AbstractNavigationBarMapActivity impleme
     GeoItemLayer<String> clickableItemsLayer;
     GeoItemLayer<String> nonClickableItemsLayer;
     NavigationTargetLayer navigationTargetLayer = null;
+    boolean forceCompactIcons = false;
 
     private LocUpdater geoDirUpdate;
     private final CompositeDisposable resumeDisposables = new CompositeDisposable();
@@ -729,7 +732,11 @@ public class UnifiedMapActivity extends AbstractNavigationBarMapActivity impleme
             listChooser.setDirect(calculateTitle(), visibleCaches);
         }
 
-        CompactIconModeUtils.forceCompactIconMode(visibleCaches);
+        final boolean newForceCompactIcons = CompactIconModeUtils.forceCompactIconMode(visibleCaches);
+        if (newForceCompactIcons != forceCompactIcons) {
+            forceCompactIcons = newForceCompactIcons;
+            refreshMapData(false);
+        }
     }
 
     /**
@@ -1056,6 +1063,8 @@ public class UnifiedMapActivity extends AbstractNavigationBarMapActivity impleme
         if (requestCode == GeocacheFilterActivity.REQUEST_SELECT_FILTER && resultCode == Activity.RESULT_OK) {
             viewModel.mapType.filterContext = data.getParcelableExtra(EXTRA_FILTER_CONTEXT);
             refreshMapData(true);
+        } else if (requestCode == REQUEST_CODE_LOG && resultCode == Activity.RESULT_OK && data != null) {
+            ShareUtils.showLogPostedSnackbar(this, data, findViewById(R.id.activity_navigationBar));
         }
     }
 

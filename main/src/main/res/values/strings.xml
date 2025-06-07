@@ -232,6 +232,13 @@
     <string name="log_delete_confirm">Do you really want to delete log of type \'%1$s\' by author \'%2$s\' with log date \'%3$s\'?</string>
     <string name="log_offline_delete_confirm">Do you really want to delete your stored offline log of type \'%1$s\' with log date \'%2$s\'?</string>
 
+    <string name="log_share_prefix_found">I found %1$s (%2$s):\n\n</string>
+    <string name="log_share_prefix_dnf">I couldn\'t find %1$s (%2$s):\n\n</string>
+    <string name="log_share_prefix_note">I left a note on %1$s (%2$s):\n\n</string>
+    <string name="log_share_prefix_maintenance">I reported maintenance needed for %1$s (%2$s):\n\n</string>
+    <string name="log_share_prefix_archive">I think %1$s (%2$s) should be archived:\n\n</string>
+    <string name="log_share_prefix_default">My log for %1$s (%2$s):\n\n</string>
+
     <string name="datetime_nodateset_display">No date set</string>
 
     <!-- Contacts -->
@@ -355,6 +362,7 @@
     <string name="dont_show_again">Don\'t show again</string>
     <string name="tap_icon_more_info">Tap on icon for more info</string>
     <string name="use_slider_adjust_value">Use slider to adjust value</string>
+    <string name="snackbar_action_share">Share</string>
 
     <string name="warn_gm_not_available">Google Maps not available.</string>
     <string name="switch_to_mf">Your Google Play Service is outdated. Do you want to switch to Mapsforge map provider instead?</string>
@@ -2106,6 +2114,7 @@
     <string name="search_filter">Filter</string>
     <string name="search_filter_info_message" formatted="false">**Search by filter** searches caches on all active online services (e.g. geocaching.com) using a provided filter. However, search capabilities of these services are usually more limited than filter capabilities of c:geo.\n\n- All services only support AND filters (no OR filters and no filter inversion).\n- The more basic filters like **cache type** or **cache size** are supported by all services. More complicated filters are often not supported or have some restrictions e.g. **favorites** or **hidden date**.\n- A detailed list on supported filters per service can be found [here](https://github.com/cgeo/cgeo/wiki/%22Search-by-Filter%22-support-by-c:geo-Connectors).\n\nFilters not supported by the online service will be applied by c:geo on the received results.</string>
     <string name="search_tb">Trackable</string>
+    <string name="most_recent">Most recent</string>
     <string name="search_destination">Open destination in c:geo</string>
     <string name="add_target_to">Add target to</string>
     <string name="search_address_started">Searching for places</string>
@@ -2202,11 +2211,14 @@
 
     <!-- export -->
     <string name="share_export">Share / Export</string>
-    <string name="export">Export / Upload</string>
+    <string name="export">Export</string>
+    <string name="export_upload">Export / Upload</string>
     <string name="export_progress">Export: %1$s</string>
     <string name="export_exportedto">exported to</string>
     <string name="export_failed">Export failed</string>
+    <string name="export_gpx">Export GPX</string>
     <string name="export_fieldnotes">Export field notes</string>
+    <string name="fieldnotes">field notes</string>
     <string name="export_fieldnotes_info">Field Notes will be exported to /sdcard/field-notes with the current date and time as their file name.</string>
     <string name="export_fieldnotes_upload">Upload to geocaching.com</string>
     <string name="export_fieldnotes_uploading">Uploading…</string>
